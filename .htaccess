@@ -1,0 +1,2 @@
+ErrorDocument 404 ./NotFound.html
+Access-Control-Allow-Origin: *
