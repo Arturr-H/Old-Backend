@@ -32,9 +32,10 @@ document.getElementById("LgnBTN").addEventListener("click", async () => {
 
         if (doc.data.Password == password) {
             console.log("Succesfully logged in to artur.red!")
-
         }
 
+        setCookie("user_id", doc.data.Id, 30);
+        window.open("https://backend.artur.red", "_self")
 
     }catch(err){
         console.log(err)
