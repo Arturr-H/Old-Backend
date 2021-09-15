@@ -44,7 +44,7 @@ const GET_RANDOM_ID = () => {
 
 //Skicka homepage filerna till "/", alltså bara backend.artur.red.
 app.get('/style.css', function (req, res) { res.sendFile(__dirname + "/" + "style.css"); });
-app.get("/", (req, res) => { res.sendFile(__dirname + "/index.html") });
+app.get("/", (req, res) => { res.sendFile(__dirname + "/HTML_FRONTEND/index.html") });
 
 const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
 
@@ -239,10 +239,10 @@ const SEND_USER_PAGE = (USER, USER_ROOMS) => {
     `
 }
 app.get("/login", async (req, res) => {
-    res.sendFile("./Login.html", {root: __dirname})
+    res.sendFile("./HTML_FRONTEND/Login.html", {root: __dirname})
 });
 app.get("/CreateAccount", async (req, res) => {
-    res.sendFile("./CreateAccount.html", {root: __dirname})
+    res.sendFile("./HTML_FRONTEND/CreateAccount.html", {root: __dirname})
 });
 
 app.get("/user/:id?", async (req, res) => {
@@ -267,7 +267,7 @@ app.get("/user/:id?", async (req, res) => {
         res.send(SEND_USER_PAGE(USER, USER_ROOMS))
 
     }catch(err){
-		res.sendFile("./404.html", { root: __dirname })
+		res.sendFile("./HTML_FRONTEND/404.html", { root: __dirname })
     }
 });
 
@@ -299,7 +299,7 @@ app.get("/room/:id", async (req, res) => {
 		// res.send("Success! id:'" + doc.data.id + "', Currently " + GET_ALL_DOCUMENTS.data.length + " lobbys online! Currently " + doc.data.Online);
 	}
 	catch (err) {
-		res.sendFile("./404.html", { root: __dirname })
+		res.sendFile("./HTML_FRONTEND/404.html", { root: __dirname })
 	}
 })
 
@@ -316,7 +316,7 @@ app.get("/rooms", async (req, res) => {
 
 //create sektionen, html sidan asså.
 app.get("/create", async (req, res) => {
-	res.sendFile("./CreateLobby.html", { root: __dirname })
+	res.sendFile("./HTML_FRONTEND/CreateLobby.html", { root: __dirname })
 })
 // SKAPA ROOM GETTER SKAPA ROOM GETTER SKAPA ROOM GETTER SKAPA ROOM GETTER SKAPA ROOM GETTER
 app.get("/Create_room/:id", async (req, res) => {
@@ -347,7 +347,7 @@ app.get("/Create_room/:id", async (req, res) => {
 		}
 
 	} else {
-		res.sendFile("./404.html", { root: __dirname })
+		res.sendFile("./HTML_FRONTEND/404.html", { root: __dirname })
 	}
 })
 
