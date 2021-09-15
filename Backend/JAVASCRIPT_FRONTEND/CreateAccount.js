@@ -25,7 +25,16 @@ document.getElementById("SgnBTN").addEventListener("click", async () => {
     const name = document.getElementById("inpUn").value;
     const description = document.getElementById("inpDs").value;
 
-    if (email.indexOf("@") != -1) {
+    if(name.length <= 1){
+        throwError("Name not specified");
+    }
+    if(password.length <= 6){
+        throwError("Password is too weak");
+    }
+    else if (email.indexOf("@") == -1) {
+        throwError("Invalid email adress.");
+    }
+    else{
         try{
             console.log(email)
             const doc = await client.query(
@@ -58,7 +67,5 @@ document.getElementById("SgnBTN").addEventListener("click", async () => {
             setCookie("user_id", ID, 30);
             window.open("https://backend.artur.red", "_self");
         }
-    }else{
-        throwError("Invalid email adress.");
     }
 })

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Backend, Artur red backend, Artur.red">
+    <meta name="author" content="Artur Hoffsummer">
+    <meta name="publisher" content="Artur Hoffsummer">
+    <meta name="copyright" content="Artur Hoffsummer">
+    <meta name="description" content="Artur.red backend server, hosted by me!">
+    <meta name="page-type" content="Games">
+    <meta name="audience" content="Everyone">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Backend of artur.red</title>
+
+</head>
+<body>
+    <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+    <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+        <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+        <button><a href="https://backend.artur.red/login">Log in</a></button>
+    </div>
+
+
+
+    <div class="ALIGN-CENTER">
+        <h1>Cahoot</h1><!-- <span><img class="INLINE_LOGO" src="https://artur.red/Backend/DATA/favicon.png"></span> -->
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button onclick="createRoom()" class="HORIZONTAL_MARGIN">Create room</button>
+        <button onclick="joinRoom()" class="HORIZONTAL_MARGIN" id="JOIN_ROOM">Join room</button>
+        <input placeholder="Room ID" class="ROOM_ID_INPUT" id="ROOM_ID_INPUT" type="text">
+        <button id="ErrorSign" class="HORIZONTAL_MARGIN" style="display: none; transition: all 0.3s; opacity: 0; margin-left: 0.4vmax; background: rgb(239, 110, 110);">Invalid ID!</button>
+    </div>
+
+    <div class="ALIGN-CENTER">
+        <button><a href="https://backend.artur.red/rooms">All rooms</a></button>
+    </div>
+
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
+    <script type="text/javascript">
+
+
+        const createRoom = () => {
+
+            window.open("https://backend.artur.red/create", "_self")
+
+        }
+        const joinRoom = () => {
+            val = document.getElementById("ROOM_ID_INPUT").value
+
+            if (val != "" && val.length == 20){
+                window.open("./room/" + document.getElementById("ROOM_ID_INPUT").value, "_self")
+            }else if(val.substring(0, 5) == "https"){
+                window.open(val, "_self")
+            }else{
+                document.getElementById("ErrorSign").style.display = "block"
+                document.getElementById("ErrorSign").style.opacity = 1
+                setTimeout(() => {
+                    document.getElementById("ErrorSign").style.opacity = 0
+                    setTimeout(()=>{document.getElementById("ErrorSign").style.display = "none"}, 400)
+                }, 2000)
+            }
+        }
+
+    </script>
+
+</body>
+</html>

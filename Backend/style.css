@@ -103,6 +103,10 @@ h3{
     width: fit-content;
     margin-left: -.07vmax;
     cursor: pointer;
+}h6{
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: -1vmax;
 }
 p{
     font-family: var(--APP-FONT);
@@ -113,6 +117,10 @@ a{
     color: black;
     text-decoration: none;
     padding: 1vmax 1vmax;
+}.ROOM_ID_COPY{
+    color: blue;
+    cursor: pointer;
+    text-align: center;
 }
 .QuestionTitle{
     font-family: var(--APP-FONT);
@@ -130,6 +138,10 @@ a{
     padding: 0%;
 
     text-align: center;
+}.INLINE_LOGO{
+    margin-top: 25%;
+    height: 8vmin;
+    margin-left: 0.5vmax;
 }
 
 /* TEXT TEXT TEXT TEXT */
@@ -149,41 +161,6 @@ a{
     margin-bottom: 1vmax;
     justify-content: center;
 }
-.CenterStart .ROOM_ID_INPUT:focus{
-    border-bottom: black 0.7vmax solid;
-}
-.ButtonContainer{
-    -ms-overflow-style: none;
-    scrollbar-width: none; /* Firefox */
-
-    display: flex;
-    position: relative;
-    margin: auto;
-
-    width: 90%;
-    overflow-x: scroll;
-
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.411) 0vmax 0vmax 2vmax;
-    border-radius: 0.3vmax;
-    padding: 0.2vmax;
-
-}.ButtonContainer::-webkit-scrollbar {
-    display: none;
-}
-.QUESTION_CONTAINER{
-    background: var(--APP-COLOR);
-
-    box-shadow: inset rgba(0, 0, 0, 0.111) 0vmax 0vmax 2vmax, rgba(0, 0, 0, 0.311) 0vmax 0vmax 2vmax;
-    border: inset 1vmax black solid;
-
-    border-radius: .5em;
-    transform: translateX(12.5%);
-    margin-top: 5vmax;
-    width: 80vw;
-    padding-top: 1vmax;
-    padding-bottom: 3vmax;
-}
 .INPUT_SEPARATOR{
     margin-bottom: 1vmax;
     background: rgb(246, 246, 246);
@@ -194,6 +171,7 @@ a{
 .margined{
     margin-left: 4vmax;
 }
+
 /* ALIGNEMENTS ALIGNEMENTS ALIGNEMENTS ALIGNEMENTS */
 /* ALIGNEMENTS ALIGNEMENTS ALIGNEMENTS ALIGNEMENTS */
 
@@ -304,6 +282,7 @@ button{
     border-radius: 0.3vmax;
     padding-left: 1.2vmax;
 }
+
 /* INPUTS INPUTS INPUTS INPUTS */
 /* INPUTS INPUTS INPUTS INPUTS */
 
@@ -349,11 +328,100 @@ button{
 
 /* --------------------------------------------- */
 
-.INLINE_LOGO{
-    margin-top: 25%;
-    height: 8vmin;
-    margin-left: 0.5vmax;
+/* CONTAINERS CONTAINERS CONTAINERS CONTAINERS */
+/* CONTAINERS CONTAINERS CONTAINERS CONTAINERS */
+
+.BUTTON_WRAPPER{
+    background: rgb(244, 244, 244);
+    border-radius: calc(var(--APP-BORDER-RADIUS) + 0.2vmax);
+    padding: 0.5vmax;
+    width: max-content;
+}.BUTTON_WRAPPER button:first-of-type{
+    margin-left: 0vmax;
+}.BUTTON_WRAPPER button:last-of-type{
+    margin-right: 0vmax;
 }
+.HORIZONTAL_MARGIN{
+    margin-left: 0.2vmax;
+    margin-right: 0.2vmax;
+}
+.CenterStart .ROOM_ID_INPUT:focus{
+    border-bottom: black 0.7vmax solid;
+}
+.ButtonContainer{
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+
+    display: flex;
+    position: relative;
+    margin: auto;
+
+    width: 90%;
+    overflow-x: scroll;
+
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.411) 0vmax 0vmax 2vmax;
+    border-radius: 0.3vmax;
+    padding: 0.2vmax;
+
+}.ButtonContainer::-webkit-scrollbar {
+    display: none;
+}
+.QUESTION_CONTAINER{
+    background: var(--APP-GRADIENT);
+
+    box-shadow: inset rgba(0, 0, 0, 0.111) 0vmax 0vmax 2vmax, rgba(0, 0, 0, 0.311) 0vmax 0vmax 2vmax;
+    border: inset 1vmax black solid;
+
+    border-radius: .5em;
+    transform: translateX(12.5%);
+    margin-top: 5vmax;
+    width: 80vw;
+    padding-top: 1vmax;
+    padding-bottom: 3vmax;
+}
+/* CONTAINERS CONTAINERS CONTAINERS CONTAINERS */
+/* CONTAINERS CONTAINERS CONTAINERS CONTAINERS */
+
+/* --------------------------------------------- */
+
+/* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
+/* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
+
+.USER_ACCOUNT_NAV{
+    position: absolute;
+    top: 0.5vmax;
+    right: 0.5vmax;
+    padding: 2vmax;
+    border-radius: var(--APP-BORDER-RADIUS);
+    border: var(--APP-BORDER);    
+
+    background-size: 4.04vmax 4.04vmax;
+    background-position: 0vmax -0.02vmax;
+
+}.USER_ACCOUNT_NAV:hover{
+    border: 0.1vmax var(--APP-COLOR) solid;
+    background: var(--APP-COLOR);
+    background-size: 4.04vmax 4.04vmax;
+    background-position: 0vmax -0.02vmax;
+}.USER_ACCOUNT_NAV:active{
+    box-shadow: inset 0vmax 0vmax 1vmax rgba(0, 0, 0, 0.181), 0vmax 0vmax 1vmax rgba(0, 0, 0, 0.181);
+}.TOP_USER_BAR{
+    position: absolute;
+    top: 0.5vmax;
+    right: 5vmax;
+}.TOP_USER_BAR > *{
+    height: 4.15vmax;
+}
+
+/* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
+/* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
+
+/* --------------------------------------------- */
+
+/* OTHER OTHER OTHER OTHER */
+/* OTHER OTHER OTHER OTHER */
+
 .SPINNING_CIRCLE_COUNTDOWN{
     width: 14vmin;
     height: 14vmin;
@@ -376,55 +444,9 @@ button{
     transform: translateX(-50%);
 }.SPINNING_CIRCLE_COUNTDOWN_TEXT:hover{
     transform: scale(1.2) translateX(-40%);
-}.ROOM_ID_COPY{
-    color: blue;
-    cursor: pointer;
-    text-align: center;
-}h6{
-    text-align: center;
-    font-weight: 300;
-    margin-bottom: -1vmax;
 }
 
-.USER_ACCOUNT_NAV{
-    position: absolute;
-    top: 0.5vmax;
-    right: 0.5vmax;
-    padding: 2vmax;
-    border-radius: var(--APP-BORDER-RADIUS);
-    border: var(--APP-BORDER);    
+/* OTHER OTHER OTHER OTHER */
+/* OTHER OTHER OTHER OTHER */
 
-    background-size: 4.02vmax 4.02vmax;
-    background-position: 0vmax -0.02vmax;
-
-}.USER_ACCOUNT_NAV:active{
-    filter: brightness(90%);
-}
-
-
-.USER_ACCOUNT_DROPDOWN {
-    transition: all 0.4s;
-
-    display: none;
-    position: absolute;
-    z-index: -1;
-
-    right: 4.4vmax;
-    top: 0.5vmax;
-
-    height: fit-content;
-    width: 10vmax;
-
-
-    text-align: center;
-    border-radius: var(--APP-BORDER-RADIUS);
-    border-top-right-radius: 0%;
-    border-bottom-right-radius: 0%;
-    border: var(--APP-BORDER);
-    border-right: none;
-}
-.USER_ACCOUNT_NAV:hover + .USER_ACCOUNT_DROPDOWN {
-    display: block;
-}.USER_ACCOUNT_DROPDOWN:hover {
-    display: block;
-}
+/* --------------------------------------------- */

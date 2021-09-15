@@ -126,7 +126,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
                 <link rel="stylesheet" href="https://backend.artur.red/style.css" type="text/css">
-                <title>Lobby ${ID}</title>
+                <title>${NAME} - ${USER.data.Username}</title>
             </head>
             <body>
                 <h1>${NAME}</h1>
