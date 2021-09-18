@@ -20,10 +20,20 @@ const throwError = (err) => {
 
 document.getElementById("SgnBTN").addEventListener("click", async () => {
 
+    const filter = /[<>]/gm
+
     const email = document.getElementById("inpEm").value;
     const password = document.getElementById("inpPw").value;
-    const name = document.getElementById("inpUn").value;
-    const description = document.getElementById("inpDs").value;
+
+    let name = document.getElementById("inpUn").value;
+    let description = document.getElementById("inpDs").value;
+
+    description = description.replace(filter, "")
+    name = name.replace(filter, "")
+
+
+    console.log(name)
+    console.log(description)
 
     if(name.length <= 1){
         throwError("Name not specified");

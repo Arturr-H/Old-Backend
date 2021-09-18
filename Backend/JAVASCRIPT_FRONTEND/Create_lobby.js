@@ -37,9 +37,11 @@ const SUBMIT = async () => {
 
         if (INDEX >= 1){
 
+            const filter = /[<>]/gm
+
             let RESULT_OBJECT = {
                 Creator: getCookie("user_id"),
-                RoomName: document.getElementById("ROOM_NAME").value,
+                RoomName: document.getElementById("ROOM_NAME").value.replace(filter, ""),
                 StartTime: parseInt(parseInt(document.getElementById("ROOM_START_TIME").value) + parseInt(new Date().getTime() / 1000)),
                 EndTime: parseInt(parseInt(document.getElementById("ROOM_END_TIME").value) + parseInt(new Date().getTime() / 1000)),
 
@@ -48,8 +50,8 @@ const SUBMIT = async () => {
 
             for (let i = 0; i < INDEX; i++) {
                 RESULT_OBJECT.Questions.push({
-                    Question: document.getElementById("QUESTION_INPUT_" + i).value,
-                    Answers: document.getElementById("ANSWER_INPUT_" + i).value.split(",").slice(0, ANSWER_CAP),
+                    Question: document.getElementById("QUESTION_INPUT_" + i).value.replace(filter, ""),
+                    Answers: document.getElementById("ANSWER_INPUT_" + i).value.replace(filter, "").split(",").slice(0, ANSWER_CAP),
                     RightAnswers: document.getElementById("CORRECT_ANSWER_INPUT_" + i).value.split(",").map(function(val){return parseInt(--val)}),
                 })
             }

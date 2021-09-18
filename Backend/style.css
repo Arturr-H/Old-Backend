@@ -144,6 +144,21 @@ a{
     height: 8vmin;
     margin-left: 0.5vmax;
 }
+.LINK{
+    transition: transform 0.1s;
+    font-size: 3vmin;
+    font-weight: 300;
+
+    text-transform: uppercase;
+
+    text-decoration: 0.07vmin solid underline black;
+
+    cursor: pointer;
+}.LINK:hover{
+    transform: scale(1.15);
+}.LINK:active{
+    transform: scale(0.93);
+}
 
 /* TEXT TEXT TEXT TEXT */
 /* TEXT TEXT TEXT TEXT */
