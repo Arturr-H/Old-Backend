@@ -19,23 +19,27 @@
     <title>Backend of artur.red</title>
 
 </head>
+
 <body>
-    <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
-    <div class="TOP_USER_BAR" id="TOP_USER_BAR">
-        <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
-        <button><a href="https://backend.artur.red/login">Log in</a></button>
+    <div class="NAVBAR">
+        <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+        <p id="sgnout" onclick="s()">Sign out</p>
+
+
+        <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+            <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+            <button><a href="https://backend.artur.red/login">Log in</a></button>
+        </div>
+
     </div>
-
-
-
     <div class="ALIGN-CENTER">
-        <h1>Cahoot</h1><!-- <span><img class="INLINE_LOGO" src="https://artur.red/Backend/DATA/favicon.png"></span> -->
+        <h1>Kashoot</h1><!-- <span><img class="INLINE_LOGO" src="https://artur.red/Backend/DATA/favicon.png"></span> -->
     </div>
 
     <div class="ALIGN-CENTER BUTTON_WRAPPER">
         <button onclick="createRoom()" class="HORIZONTAL_MARGIN">Create room</button>
         <button onclick="joinRoom()" class="HORIZONTAL_MARGIN" id="JOIN_ROOM">Join room</button>
-        <input placeholder="Room ID" class="ROOM_ID_INPUT" id="ROOM_ID_INPUT" type="text">
+        <input placeholder="Room ID" class="ROOM_ID_INPUT" id="ROOM_ID_INPUT" style="margin-left: -0.8vmax;" type="text">
         <button id="ErrorSign" class="HORIZONTAL_MARGIN" style="display: none; transition: all 0.3s; opacity: 0; margin-left: 0.4vmax; background: rgb(239, 110, 110);">Invalid ID!</button>
     </div>
 
@@ -47,7 +51,10 @@
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
     <script type="text/javascript">
 
-
+        const s = () => {
+            setCookie("user_id", "", 30);
+            window.location.reload()
+        }
         const createRoom = () => {
 
             window.open("https://backend.artur.red/create", "_self")

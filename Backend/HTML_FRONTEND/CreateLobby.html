@@ -13,15 +13,22 @@
 
 </head>
 <body>
-    <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+    <div class="NAVBAR">
+        <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+        <p id="sgnout" onclick="s()">Sign out</p>
 
-    <h1>Create lobby!</h1>
 
-    <div class="ALIGN-CENTER">
+        <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+            <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+            <button><a href="https://backend.artur.red/login">Log in</a></button>
+        </div>
 
-        <button style="margin: 0%; z-index: 2;">Settings:</button>
-        <input placeholder="Room name" class="ROOM_ID_INPUT" id="ROOM_NAME" type="text" style="z-index: 1;">
-        <input placeholder="Start time" class="ROOM_ID_INPUT" id="ROOM_START_TIME" type="text" style="z-index: 0;">
+    </div>
+    <h1 style="margin-bottom: 3vmax;">Create a room!</h1>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+
+        <input placeholder="Room name" class="TEXT_INPUT" id="ROOM_NAME" type="text" style="z-index: 2;">
 
     </div>
 
@@ -34,6 +41,24 @@
 
         </div>
 
+    </div>
+
+    <h1 class="SmallH1 margined">Optional lobby parameters</h1>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+
+        <input placeholder="Start time" class="TEXT_INPUT" id="ROOM_START_TIME" type="text">
+        <input placeholder="End time" class="TEXT_INPUT" id="ROOM_END_TIME" type="text">
+
+    </div>
+    <div class="ALIGN-CENTER">
+        <h1 id="erroroutput" class="SmallH1" style="
+            background: linear-gradient(158deg, rgb(239, 126, 126), rgb(208, 10, 10));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            width: 80%;
+        "></h1>
     </div>
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>

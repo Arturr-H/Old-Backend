@@ -35,14 +35,14 @@ const SUBMIT = async () => {
 
     if (getCookie("user_id") != "") {
 
-        console.log("success!" + getCookie("user_id"))
-
         if (INDEX >= 1){
 
             let RESULT_OBJECT = {
                 Creator: getCookie("user_id"),
                 RoomName: document.getElementById("ROOM_NAME").value,
                 StartTime: parseInt(parseInt(document.getElementById("ROOM_START_TIME").value) + parseInt(new Date().getTime() / 1000)),
+                EndTime: parseInt(parseInt(document.getElementById("ROOM_END_TIME").value) + parseInt(new Date().getTime() / 1000)),
+
                 Questions: []
             }
 
@@ -58,19 +58,25 @@ const SUBMIT = async () => {
                 roomID += str.charAt(Math.floor(Math.random() * str.length));;
             }
 
+            try{
+                await fetch('https://backend.artur.red/Create_room/' + roomID, 
+                {
+                    method: "GET",
+                    headers: {questions: JSON.stringify(RESULT_OBJECT)},
+                    'Cache-Control': 'no-cache',
+                })
+                window.open("https://backend.artur.red/room/" + roomID, "_self")
+            }catch(err){
+                console.log(err)
+                document.getElementById("erroroutput").innerHTML = err
+            }
 
-            await fetch('https://backend.artur.red/Create_room/' + roomID, 
-            {
-                method: "GET",
-                headers: {questions: JSON.stringify(RESULT_OBJECT)},
-                'Cache-Control': 'no-cache',
-            });
-
-            open("https://backend.artur.red/room/" + roomID, "_self")
         }else{
             open("https://backend.artur.red/CreateAccount", "_self")
         }
-    }    
+    }else{
+        window.open("https://backend.artur.red/CreateAccount")
+    }
 }
 
 

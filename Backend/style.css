@@ -16,7 +16,6 @@
 body{
     overflow-x: hidden;
     margin: 0%;
-    margin-top: 2vmax;
     margin-bottom: 5vmax;
 }
 
@@ -63,6 +62,8 @@ h1{
     padding: 0%;
 
     text-align: center;
+
+    padding-top: 5vmax;
 }
 .SmallH1{
 
@@ -75,7 +76,7 @@ h1{
     background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    text-transform: capitalize;
+    text-transform: initial;
 
     padding: 0%;
     margin-top: 3vmax;
@@ -282,6 +283,32 @@ button{
     border-radius: 0.3vmax;
     padding-left: 1.2vmax;
 }
+.TEXT_INPUT{
+    transition: border 0.2s, transform 0.2s;
+    background: white;
+
+    border: black 0.1vmax solid;
+
+    display: block;
+    outline: none;
+    padding: 0.3vmax 0.8vmax;
+
+    margin: 0vmax;
+
+    margin-left: 0.2vmax;
+    margin-right: 0.2vmax;
+
+    border-radius: 0.3vmax;
+
+    z-index: 0;
+
+    font-family: var(--APP-FONT);
+    font-weight: 300;
+    font-size: 1.5vmax;
+
+    width: 10vmax;
+    height: 3vmax;
+}
 
 /* INPUTS INPUTS INPUTS INPUTS */
 /* INPUTS INPUTS INPUTS INPUTS */
@@ -336,9 +363,9 @@ button{
     border-radius: calc(var(--APP-BORDER-RADIUS) + 0.2vmax);
     padding: 0.5vmax;
     width: max-content;
-}.BUTTON_WRAPPER button:first-of-type{
+}.BUTTON_WRAPPER *:first-of-type{
     margin-left: 0vmax;
-}.BUTTON_WRAPPER button:last-of-type{
+}.BUTTON_WRAPPER *:last-of-type{
     margin-right: 0vmax;
 }
 .HORIZONTAL_MARGIN{
@@ -389,10 +416,10 @@ button{
 /* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
 
 .USER_ACCOUNT_NAV{
-    position: absolute;
-    top: 0.5vmax;
-    right: 0.5vmax;
-    padding: 2vmax;
+    position: relative;
+
+    width: 4vmax;
+    height: 4vmax;
     border-radius: var(--APP-BORDER-RADIUS);
     border: var(--APP-BORDER);    
 
@@ -406,12 +433,6 @@ button{
     background-position: 0vmax -0.02vmax;
 }.USER_ACCOUNT_NAV:active{
     box-shadow: inset 0vmax 0vmax 1vmax rgba(0, 0, 0, 0.181), 0vmax 0vmax 1vmax rgba(0, 0, 0, 0.181);
-}.TOP_USER_BAR{
-    position: absolute;
-    top: 0.5vmax;
-    right: 5vmax;
-}.TOP_USER_BAR > *{
-    height: 4.15vmax;
 }
 
 /* USER STUFF   USER STUFF   USER STUFF   USER STUFF   */
@@ -450,3 +471,14 @@ button{
 /* OTHER OTHER OTHER OTHER */
 
 /* --------------------------------------------- */
+
+.NAVBAR{
+    width: 100%;
+    height: 5vmax;
+    position: fixed;
+    background: white;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    box-shadow: 0vmax -.5vmax 1vmax black;
+}

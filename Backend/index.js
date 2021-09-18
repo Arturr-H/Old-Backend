@@ -3,6 +3,12 @@ const express = require('express');
 const { Do } = require('faunadb');
 const app = express();
 
+var cors = require('cors')
+app.use(cors())
+
+const http = require("http");
+console.log(`Max HTTP Header size is ${http.maxHeaderSize}`);
+
 //FaunaDB
 const faunadb = require("faunadb")
 
@@ -41,6 +47,26 @@ const GET_RANDOM_ID = () => {
 	return QuestionID;
 }
 
+const CHECK_UID = async (UID) => {
+
+    //Kolla om den kan fetcha user ID:et från faunaDB, om try-catch
+    //blocket failar så returna status 404;
+    try{
+        await client.query(
+			Get(Match(Index("user_by_id"), UID))
+		)
+        return 200;
+    }catch{
+        return 404;
+    }
+}
+
+app.get("/checkUIDstatus", async (req, res) => {
+
+    //Eftersom jag inte vill ha faunadb i frontend (personer kan se min fdb secret), så gör jag
+    // en endpoint som tar en header med ett userID och kollar om usern fortfarande finns.
+    res.sendStatus(await CHECK_UID(req.get("UID")));
+})
 
 //Skicka homepage filerna till "/", alltså bara backend.artur.red.
 app.get('/style.css', function (req, res) { res.sendFile(__dirname + "/" + "style.css"); });
@@ -73,6 +99,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
 
 		EndString += "</div></div>"
 	});
+
 
     //Kolla om start time har passerat eller itne.c
     if(DOC.StartTime >= new Date().getTime() / 1000){
@@ -115,6 +142,54 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
             </body>
             </html>
         `
+    }else if (DOC.EndTime <= new Date().getTime() / 1000){
+        return `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+                <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
+
+                <title>Error</title>
+            </head>
+            <body>
+                <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+
+                <h1>Oopsies, no page here dumbass .........</h1>
+                <a href="https://backend.artur.red"><p>Homepage</p></a>
+                <style>
+                    h1{
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 600;
+                        font-size: 3.5vmax;
+
+                        margin: 0%;
+                        padding: 0%;
+
+                        color: rgb(0, 0, 0);
+
+                        text-align: center;
+                    }
+                    p{
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 300;
+                        font-size: 1.5vmax;
+
+                        color: rgb(35, 15, 255);
+                        text-align: center;
+                        text-decoration: underline solid 2px blue;
+                        cursor: pointer;
+                    }
+                </style>
+                <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+                <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
+
+            </body>
+            </html>
+        `
     }else{
     	return `
             <!DOCTYPE html>
@@ -127,16 +202,30 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
                 <link rel="stylesheet" href="https://backend.artur.red/style.css" type="text/css">
                 <title>${NAME} - ${USER.data.Username}</title>
+                
             </head>
             <body>
+                <h1 class="SmallH1" style="position: absolute; top: -2.5vmax; right: 0.5vmax" id="DeadCountdown"></h1>
+
                 <h1>${NAME}</h1>
-                <h1 class="SmallH1" style="text-align: center">by<span style="text-decoration: underline 0.2vmax rgb(114, 227, 185)"><a href="https://backend.artur.red/user/${DOC.Creator}">${USER.data.Username}</a></span></h1>
-            
+                <h1 class="SmallH1" style="text-align: center">by<span style="text-decoration: underline 0.3vmax rgb(114, 227, 185)"><a href="https://backend.artur.red/user/${DOC.Creator}">${USER.data.Username}</a></span></h1>
+
                 
                 ${EndString}
                 <h1 id="endScore"></h1>
 
                 <script>
+
+                    setInterval(() => {
+
+                        if(parseInt(${DOC.EndTime} - new Date().getTime() / 1000) <= 0){
+                            location.reload();
+                        }if(parseInt(${DOC.EndTime} - new Date().getTime() / 1000) <= 60){
+                            document.getElementById("DeadCountdown").innerHTML = parseInt(${DOC.EndTime} - new Date().getTime() / 1000)
+                        }
+
+                    }, 1000)
+
 
                     let finalScore = [0, 0, 0]
                     let clicked = []
@@ -247,7 +336,7 @@ app.get("/CreateAccount", async (req, res) => {
 
 app.get("/user/:id?", async (req, res) => {
 
-    try{//rooms_by_creator_id
+    try{
         const USER = await client.query(
 			Get(Match(Index("user_by_id"), req.params.id.toString()))
 		)
@@ -335,6 +424,7 @@ app.get("/Create_room/:id", async (req, res) => {
 							title: QUESTION_HEADERS.RoomName,
 							Questions: QUESTION_HEADERS.Questions,
                             StartTime: QUESTION_HEADERS.StartTime,
+                            EndTime: QUESTION_HEADERS.EndTime,
                             Creator: QUESTION_HEADERS.Creator,
 						}
 					},
