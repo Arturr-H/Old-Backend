@@ -22,7 +22,6 @@ const CHECK_UID_AVAILABILITY = async () => {
         }
     }).then((res) => {
         if (res.status == 404) {
-            console.log(getCookie("user_id"))
             if (getCookie("user_id") != "unavailable") {
                 setCookie("user_id", "unavailable", 30)
                 window.location.reload();
