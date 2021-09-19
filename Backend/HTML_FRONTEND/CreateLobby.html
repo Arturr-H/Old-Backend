@@ -24,13 +24,12 @@
         </div>
 
         <a class="LINK" href="https://backend.artur.red"><span style="transform: rotate(-90deg); display: inline-block;">⌃</span>back</a>
-
     </div>
     <h1 style="margin-bottom: 3vmax;">Create a room!</h1>
 
     <div class="ALIGN-CENTER BUTTON_WRAPPER">
 
-        <input placeholder="Room name" class="TEXT_INPUT" id="ROOM_NAME" type="text" style="z-index: 2;">
+        <input placeholder="Room name" class="TEXT_INPUT" id="ROOM_NAME" type="text" style="z-index: 2; width: 20vmax;">
 
     </div>
 
@@ -38,14 +37,12 @@
 
         <div id="OUTPUT">
             
-            <button onclick="addShit()" style="margin-bottom: 2vmax">Add question</button>
-            <button id="SUBMIT_ALL" onclick="SUBMIT()">Submit!</button>
-
+            <div class="BUTTON_WRAPPER" style="margin-bottom: 2vmax">
+                <button style="width: 15vmax;" onclick="addShit()">Add question</button>
+            </div>
         </div>
 
     </div>
-
-    <h1 class="SmallH1 margined">Optional lobby parameters</h1>
 
     <div class="ALIGN-CENTER BUTTON_WRAPPER">
 
@@ -61,6 +58,10 @@
             text-align: center;
             width: 80%;
         "></h1>
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button id="SUBMIT_ALL" onclick="SUBMIT()" style="width: 15vmax;">Submit room</button>
     </div>
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
