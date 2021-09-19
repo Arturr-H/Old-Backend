@@ -61,6 +61,28 @@ const CHECK_UID = async (UID) => {
     }
 }
 
+const GET_NAVBAR = () => {
+    return `
+        <div class="NAVBAR">
+            <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+            <p id="sgnout" onclick="s()">Sign out</p>
+
+
+            <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+                <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+                <button><a href="https://backend.artur.red/login">Log in</a></button>
+            </div>
+
+            <a class="LINK" href="https://backend.artur.red"><span style="transform: rotate(-90deg); display: inline-block;">⌃</span>back</a>
+
+        </div>
+        <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+
+        <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
+
+    `
+}
+
 app.get("/checkUIDstatus", async (req, res) => {
 
     //Eftersom jag inte vill ha faunadb i frontend (personer kan se min fdb secret), så gör jag
@@ -108,7 +130,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <link rel="icon" href="https://artur.red/favicon.png">
+                <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
@@ -117,6 +139,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
             </head>
             <body>
                 
+                ${GET_NAVBAR()}
                 <div class="SPINNING_CIRCLE_COUNTDOWN"></div>
                 <h1 class="SPINNING_CIRCLE_COUNTDOWN_TEXT" id="RoomCountdown">${parseInt(DOC.StartTime - new Date().getTime() / 1000)}</h1>
                 <p style="text-align: center">Share this lobby with others!</p>
@@ -156,9 +179,9 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
                 <title>Error</title>
             </head>
             <body>
-                <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+                ${GET_NAVBAR()}
 
-                <h1>Oopsies, no page here dumbass .........</h1>
+                <h1>404 - Page not found.</h1>
                 <a href="https://backend.artur.red"><p>Homepage</p></a>
                 <style>
                     h1{
@@ -196,7 +219,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <link rel="icon" href="https://artur.red/favicon.png">
+                <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
                 <link rel="preconnect" href="https://fonts.googleapis.com">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
@@ -205,6 +228,7 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
                 
             </head>
             <body>
+                ${GET_NAVBAR()}
                 <h1 class="SmallH1" style="position: absolute; top: -2.5vmax; right: 0.5vmax" id="DeadCountdown"></h1>
 
                 <h1>${NAME}</h1>
