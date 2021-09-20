@@ -106,202 +106,13 @@ app.get("/checkUIDstatus", async (req, res) => {
 app.get('/style.css', function (req, res) { res.sendFile(__dirname + "/" + "style.css"); });
 app.get("/", (req, res) => { res.sendFile(__dirname + "/HTML_FRONTEND/index.html") });
 
-// const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
 
-// 	let EndString = ""
-
-
-// 	DOC.Questions.forEach(element => {
-
-// 		let QuestionID = GET_RANDOM_ID()
-// 		EndString += "<div class='QUESTION_CONTAINER'><p class='QuestionTitle'>" + element.Question + "</p> <p style='text-align: center; color: rgba(255, 255, 255, 0.7)'>" + ((element.RightAnswers.length >= 2) ? "This question contains multiple answers" : "") + "</p> <div class='ButtonContainer'>"
-
-// 		element.Answers.forEach((answer, indx) => {
-
-// 			QuestionID = GET_RANDOM_ID()
-
-// 			if (element.RightAnswers.indexOf(indx) != -1) {
-
-// 				EndString += `<button id="id--` + QuestionID + `-" onclick='check("id--` + QuestionID + `-")'>` + answer + `</button>`
-
-// 			} else {
-
-// 				EndString += `<button id="id--` + QuestionID + `" onclick='check("id--` + QuestionID + `")'>` + answer + `</button>`
-
-// 			}
-// 		})
-
-// 		EndString += "</div></div>"
-// 	});
-
-
-//     //Kolla om start time har passerat eller itne.c
-//     if(DOC.StartTime >= new Date().getTime() / 1000){
-//         return `
-//             <!DOCTYPE html>
-//             <html lang="en">
-//             <head>
-//                 <meta charset="UTF-8">
-//                 <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
-//                 <link rel="preconnect" href="https://fonts.googleapis.com">
-//                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-//                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
-//                 <link rel="stylesheet" href="https://backend.artur.red/style.css" type="text/css">
-//                 <title id="title">Lobby opening in ${parseInt(DOC.StartTime - new Date().getTime() / 1000)}</title>
-//             </head>
-//             <body>
-                
-//                 ${GET_NAVBAR()}
-//                 <div class="SPINNING_CIRCLE_COUNTDOWN"></div>
-//                 <h1 class="SPINNING_CIRCLE_COUNTDOWN_TEXT" id="RoomCountdown">${parseInt(DOC.StartTime - new Date().getTime() / 1000)}</h1>
-//                 <p style="text-align: center">Share this lobby with others!</p>
-//                 <h6>Click to copy</h6>
-//                 <p class="ROOM_ID_COPY" onclick="copyToClipboard('${ID}')">${ID}</p>
-
-//                 <script>
-//                     function copyToClipboard(value) {
-//                         navigator.clipboard.writeText(value)
-//                     }
-//                     let CurrentDate = new Date();
-//                     setInterval(() => {
-
-//                         if(parseInt(${DOC.StartTime} - CurrentDate.getTime() / 1000) <= 0){
-//                             location.reload();
-//                         }else{
-//                             CurrentDate = new Date()
-//                             document.getElementById("title").innerHTML = "Lobby opening in " + parseInt(${DOC.StartTime} - CurrentDate.getTime() / 1000);
-//                             document.getElementById("RoomCountdown").innerHTML = parseInt(${DOC.StartTime} - CurrentDate.getTime() / 1000);
-//                         }
-//                     }, 1000)
-//                 </script>
-//             </body>
-//             </html>
-//         `
-//     }else if (DOC.EndTime <= new Date().getTime() / 1000){
-//         return `
-//             <!DOCTYPE html>
-//             <html lang="en">
-//             <head>
-//                 <meta charset="UTF-8">
-//                 <link rel="preconnect" href="https://fonts.googleapis.com">
-//                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-//                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-//                 <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
-
-//                 <title>Error</title>
-//             </head>
-//             <body>
-//                 ${GET_NAVBAR()}
-
-//                 <h1>404 - Page not found.</h1>
-//                 <a href="https://backend.artur.red"><p>Homepage</p></a>
-//                 <style>
-//                     h1{
-//                         font-family: 'Montserrat', sans-serif;
-//                         font-weight: 600;
-//                         font-size: 3.5vmax;
-
-//                         margin: 0%;
-//                         padding: 0%;
-
-//                         color: rgb(0, 0, 0);
-
-//                         text-align: center;
-//                     }
-//                     p{
-//                         font-family: 'Montserrat', sans-serif;
-//                         font-weight: 300;
-//                         font-size: 1.5vmax;
-
-//                         color: rgb(35, 15, 255);
-//                         text-align: center;
-//                         text-decoration: underline solid 2px blue;
-//                         cursor: pointer;
-//                     }
-//                 </style>
-//                 <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
-//                 <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
-
-//             </body>
-//             </html>
-//         `
-//     }else{
-//     	return `
-//             <!DOCTYPE html>
-//             <html lang="en">
-//             <head>
-//                 <meta charset="UTF-8">
-//                 <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
-//                 <link rel="preconnect" href="https://fonts.googleapis.com">
-//                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-//                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
-//                 <link rel="stylesheet" href="https://backend.artur.red/style.css" type="text/css">
-//                 <title>${NAME} - ${USER.data.Username}</title>
-                
-//             </head>
-//             <body>
-//                 ${GET_NAVBAR()}
-//                 <h1 class="SmallH1" style="position: absolute; top: -2.5vmax; right: 0.5vmax" id="DeadCountdown"></h1>
-
-//                 <h1>${NAME}</h1>
-//                 <h1 class="SmallH1" style="text-align: center">by<span style="text-decoration: underline 0.3vmax rgb(114, 227, 185)"><a href="https://backend.artur.red/user/${DOC.Creator}">${USER.data.Username}</a></span></h1>
-
-                
-//                 ${EndString}
-//                 <h1 id="endScore"></h1>
-
-//                 <script>
-
-//                     setInterval(() => {
-
-//                         if(parseInt(${DOC.EndTime} - new Date().getTime() / 1000) <= 0){
-//                             location.reload();
-//                         }if(parseInt(${DOC.EndTime} - new Date().getTime() / 1000) <= 60){
-//                             document.getElementById("DeadCountdown").innerHTML = parseInt(${DOC.EndTime} - new Date().getTime() / 1000)
-//                         }
-
-//                     }, 1000)
-
-
-//                     let finalScore = [0, 0, 0]
-//                     let clicked = []
-
-//                     const update = () => {
-//                         document.getElementById("endScore").innerHTML = parseInt(finalScore[0]/finalScore[2]*100) + "% right"
-//                     }
-
-//                     const check = (i_) => {
-
-//                         if(clicked.includes(i_) == false){
-
-//                             if(i_.slice(-1)=="-"){
-//                                 finalScore[0]++;
-//                                 finalScore[2]++;
-//                                 update()
-//                                 document.getElementById(i_).style.background = "rgb(114, 227, 185)"
-//                                 clicked.push(i_)
-//                             }else{
-//                                 finalScore[1]++;
-//                                 finalScore[2]++;
-//                                 update()
-//                                 document.getElementById(i_).style.background = "#f4665f"
-//                                 clicked.push(i_)
-
-//                             }
-//                         }
-//                     }
-//                 </script>
-//             </body>
-//             </html>
-//         `
-//     }
-// }
 const GET_ALL_ROOMS = (DOC) => {
 
     let endString = ""
 
     DOC.data.forEach((element) => {
-        endString += `<button style="margin-left: 0.5vmax;"><a href="https://backend.artur.red/room/${element.data.id}">${element.data.title}</a></button>`
+        endString += `<button class="ANIMATED_BUTTON" style="margin-left: 0.5vmax;"><a href="https://backend.artur.red/room/${element.data.id}">${element.data.title}</a></button>`
     })
 
     return `
@@ -319,9 +130,30 @@ const GET_ALL_ROOMS = (DOC) => {
             </head>
             <body>
                 <h1>Available rooms</h1>
-                <div class="CenterScroll">
+
+                <div
+                    style="height: 64vmax;"
+                    id="opt"
+                >
                     ${endString}
                 </div>
+
+                <script>
+
+                    var children = document.getElementById("opt").children;
+                    for (var i = 0; i < children.length; i++) {
+                        const x = (Math.random() * (0 - 80) + 80).toFixed(4)
+                        const y = (Math.random() * (0 - 100) + 100).toFixed(4)
+                        console.log((Math.random() * (0 - 100) + 100).toFixed(4))
+
+                        children[i].style.animationDuration = (Math.random() * (2 - 10) + 10).toFixed(4) + "s"
+                        children[i].style.position = "absolute";
+                        children[i].style.top = y+"%";
+                        children[i].style.left = x+"%";
+
+                    }
+                    
+                </script>
             </body>
         </html>
     `
@@ -356,7 +188,11 @@ const SEND_USER_PAGE = (USER, USER_ROOMS) => {
                 </div>
                 <div class="margined">
                     <h1 class="SmallH1">${USER.data.Username}'s rooms:</h1>
-                    ${userRoomHTML}
+                    <div class="">
+                        <div class="ButtonContainer" style="max-height: 8vmax">
+                            ${userRoomHTML}
+                        </div>
+                    </div>
                 </div>
             </body>
         </html>

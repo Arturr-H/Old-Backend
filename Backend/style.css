@@ -3,13 +3,12 @@
 
 :root{
     --APP-COLOR: rgb(114, 227, 185);/*linear-gradient(-45deg, #f4ff59 0%, #c04e57 100%)*/
-    --APP-GRADIENT: linear-gradient(-58deg, rgb(114, 227, 185), rgb(114, 187, 227));/*linear-gradient(-45deg, #f4ff59 0%, #c04e57 100%)*/
+    --APP-GRADIENT: rgb(67, 63, 84);/*linear-gradient(-58deg, rgb(114, 227, 185), rgb(114, 187, 227))*/
 
     --APP-ERROR-COLOR: linear-gradient(-58deg, rgb(239, 110, 110), rgb(211, 44, 44));
     --APP-FONT: 'Montserrat', sans-serif;
 
     --BUTTON-COLOR: rgb(1, 1, 1);
-
     --APP-BORDER-RADIUS: 0.3vmax;
     --APP-BORDER: 0.1vmax black solid;
 }
@@ -183,6 +182,7 @@ a{
     justify-content: center;
 }
 .INPUT_SEPARATOR{
+
     margin-bottom: 1vmax;
     padding: 0.5vmax;
     border-radius: 0.5vmax;
@@ -328,6 +328,10 @@ button{
     width: 10vmax;
     height: 3vmax;
 }
+.ADDER{
+    width: 100%;
+    margin-top: 1vmax;
+}
 
 /* INPUTS INPUTS INPUTS INPUTS */
 /* INPUTS INPUTS INPUTS INPUTS */
@@ -355,7 +359,7 @@ button{
 }
 @media screen and (max-width: 2200px) {
     .SCALABLE{
-        font-size: 150%;
+        font-size: 120%;
     }
 }
 
@@ -379,7 +383,42 @@ button{
 
     }
 }
+@keyframes AnimatedButton {
+    0%{
+        margin-left: -0.39368841283105405vmax;margin-right: -0.2803454293228973vmax;margin-top: 12.05369063655816375vmax;margin-bottom: 0.6061396552472731vmax;
 
+    }5%{
+        margin-left: 0.6514756060209972vmax;margin-right: -0.08824019878552924vmax;margin-top: 12.6253481615813241vmax;margin-bottom: 0.6664383488845345vmax;
+
+    }20%{
+        margin-left: -0.2960514967722738vmax;margin-right: 0.03308307299048896vmax;margin-top: 12.12002328014911923vmax;margin-bottom: 0.6722823278338557vmax;
+
+    }43%{
+        margin-left: 0.7397120024395507vmax;margin-right: 0.3432276543477819vmax;margin-top: 12.45966427577318414vmax;margin-bottom: -0.4597742590897087vmax;
+
+    }48%{
+        margin-left: -0.4452352021737511vmax;margin-right: 0.8232168851767026vmax;margin-top: 13.8954301688076969vmax;margin-bottom: 0.03306124101224883vmax;
+
+    }59%{
+        margin-left: 0.3507318697263244vmax;margin-right: -0.6237528716181064vmax;margin-top: 12.8745910311526088vmax;margin-bottom: -0.8869053978034855vmax;
+
+    }67%{
+        margin-left: 0.10857333749690157vmax;margin-right: -0.4178643771198476vmax;margin-top: 12.29179561392674014vmax;margin-bottom: -0.5798765302002815vmax;
+
+    }72%{
+        margin-left: 0.29752919787564647vmax;margin-right: 0.22738253903834993vmax;margin-top: 13.15443112793174474vmax;margin-bottom: -0.989353579623871vmax;
+
+    }86%{
+        margin-left: -0.7347317575976096vmax;margin-right: -0.5541204341182207vmax;margin-top: 12.8888120434195743vmax;margin-bottom: 0.5283862292358381vmax;
+
+    }92%{
+        margin-left: 0.2974180326043985vmax;margin-right: 0.5981821501901821vmax;margin-top: 13.5084093539142505vmax;margin-bottom: -0.7903516351756075vmax;
+
+    }100%{
+        margin-left: -0.7307211069627604vmax;margin-right: -0.023494332695106923vmax;margin-top: 12.6519596985644864vmax;margin-bottom: 0.8792551369147215vmax;
+
+    }
+}
 
 /* KEYFRAMES KEYFRAMES KEYFRAMES KEYFRAMES */
 /* KEYFRAMES KEYFRAMES KEYFRAMES KEYFRAMES */
@@ -401,6 +440,12 @@ button{
 }.BUTTON_WRAPPER *:last-of-type{
     margin-right: 0vmax;
 }
+.SCROLLABLE{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 50vmax;
+    max-height: 4vmax;
+}
 .HORIZONTAL_MARGIN{
     margin-left: 0.2vmax;
     margin-right: 0.2vmax;
@@ -421,10 +466,15 @@ button{
 
     background: white;
     box-shadow: rgba(0, 0, 0, 0.411) 0vmax 0vmax 2vmax;
+    border: 0.1vmax rgba(0, 0, 0, 0.082) solid;
     border-radius: 0.3vmax;
     padding: 0.2vmax;
 
-}.ButtonContainer::-webkit-scrollbar {
+}.ButtonContainer > a > button{
+    max-height: 5vmax;
+    width: max-content;
+}
+.ButtonContainer::-webkit-scrollbar {
     display: none;
 }
 .QUESTION_CONTAINER{
@@ -526,7 +576,6 @@ button{
 .ANSWER_OUTPUT{
     
     max-width: min-content;
-    margin-left: 3vmax;
 
 }.ANSWER_OUTPUT > input[type="text"]{
     display: inline-block;
@@ -621,3 +670,46 @@ input[type="checkbox"]::before{
 .container input:checked ~ .checkmark {
     background-color: var(--APP-COLOR);
 }
+
+.ANIMATED_BUTTON{
+    animation: AnimatedButton 2s ease-in-out infinite forwards;
+    animation-direction: alternate-reverse;
+}
+
+
+
+
+.LOGO_O{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.LOGO_O::before{
+    content: "";
+    background: var(--APP-GRADIENT);
+
+    display: flex;
+    
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--APP-GRADIENT);
+
+    position: absolute;
+
+    margin-left: 1.8vh;
+    margin-top: 2vh;
+
+    padding: calc(1.8vh);
+    /* position: absolute;
+    background: #a9aaab;
+    
+    height: 300px;
+    width: 300px;
+    /*
+     Put top edge and left edge in the center
+    */
+    /* top: 50%;
+    left: 50%;
+    margin: -150px 0px 0px -150px;  */
+}
+

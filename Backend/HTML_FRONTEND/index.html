@@ -24,7 +24,7 @@
 <body>
     <div class="NAVBAR">
         <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
-        <p id="sgnout" onclick="s()">Sign out</p>
+        <p id="sgnout" onclick="sgno">Sign out</p>
 
 
         <div class="TOP_USER_BAR" id="TOP_USER_BAR">
@@ -35,7 +35,7 @@
         <a class="LINK" href="https://artur.red"><span style="transform: rotate(-90deg); display: inline-block;">⌃</span>back</a>
     </div>
     <div class="ALIGN-CENTER">
-        <h1>Kashoot</h1><!-- <span><img class="INLINE_LOGO" src="https://artur.red/Backend/DATA/favicon.png"></span> -->
+        <h1>Kash<span class="LOGO_O">o</span><span class="LOGO_O">o</span>t</h1>
     </div>
 
     <div class="ALIGN-CENTER BUTTON_WRAPPER">
@@ -51,35 +51,6 @@
 
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
     <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
-    <script type="text/javascript">
-
-        const s = () => {
-            setCookie("user_id", "", 30);
-            window.location.reload()
-        }
-        const createRoom = () => {
-
-            window.open("https://backend.artur.red/create", "_self")
-
-        }
-        const joinRoom = () => {
-            val = document.getElementById("ROOM_ID_INPUT").value
-
-            if (val != "" && val.length == 20){
-                window.open("./room/" + document.getElementById("ROOM_ID_INPUT").value, "_self")
-            }else if(val.substring(0, 5) == "https"){
-                window.open(val, "_self")
-            }else{
-                document.getElementById("ErrorSign").style.display = "block"
-                document.getElementById("ErrorSign").style.opacity = 1
-                setTimeout(() => {
-                    document.getElementById("ErrorSign").style.opacity = 0
-                    setTimeout(()=>{document.getElementById("ErrorSign").style.display = "none"}, 400)
-                }, 2000)
-            }
-        }
-
-    </script>
 
 </body>
 </html>

@@ -47,23 +47,19 @@ const AddAnswer = (IDX) => {
 
 const addShit = () => {
 
+
     if(INDEX <= 7){
 
         const OUTPUT = document.getElementById("OUTPUT")
 
         const text = `
 
-            <div style="margin-bottom: 2.5vmax">
-                <div class="INPUT_SEPARATOR ALIGN-CENTER BUTTON_WRAPPER">
+            <div style="margin-bottom: 2.5vmax; width: 25vmax" class="BUTTON_WRAPPER">
 
-                    <button style="margin-right: -0.6vmax;">Question:</button>
+                <input id="QUESTION_INPUT_${INDEX}"              placeholder="Question"        class="TEXT_INPUT"    style="margin: auto; margin-bottom: 1vmax; width: 70%"       type="text">
 
-                    <input id="QUESTION_INPUT_${INDEX}"              placeholder="Question"        class="Q_A_INPUT"          type="text"       style="margin-right: 1vmax;">
-
-                    <button style="margin-right: 0%; z-index: 3" onclick="AddAnswer(${INDEX})">Add answer</button>
-
-                </div>
-                <div id="ANSWER_OUTPUT_${INDEX}" class="ANSWER_OUTPUT BUTTON_WRAPPER"></div>
+                <div id="ANSWER_OUTPUT_${INDEX}" style="margin: auto" class="ANSWER_OUTPUT"></div>
+                <button class="ADDER" onclick="AddAnswer(${INDEX})">+</button>
             </div>
 
         `
@@ -73,6 +69,15 @@ const addShit = () => {
         // newcontent.innerHTML = text;
 
         OUTPUT.insertAdjacentHTML("beforeend", text)
+
+        if (document.getElementById("drm") != undefined) {
+            document.getElementById("drm").remove();
+        }
+        OUTPUT.insertAdjacentHTML("beforeend", `    
+            <div id="drm" class="BUTTON_WRAPPER" style="margin-bottom: 2vmax">
+                <button style="width: 25vmax;" onclick="addShit()">Add question</button>
+            </div>
+        `)
 
         INDEX += 1;
     }

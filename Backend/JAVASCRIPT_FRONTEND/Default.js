@@ -31,3 +31,17 @@ const CHECK_UID_AVAILABILITY = async () => {
 }
 
 CHECK_UID_AVAILABILITY()
+
+
+if (document.getElementById("sgnout") != undefined) {
+    document.getElementById("sgnout").addEventListener("click", () => {
+        setCookie("user_id", "", 30);
+        window.location.reload()
+    });
+}
+
+const createRoom = () => {
+
+    window.open("https://backend.artur.red/create", "_self")
+
+}
