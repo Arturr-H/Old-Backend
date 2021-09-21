@@ -8,6 +8,11 @@ let ALL_QUESTIONS = {}
 
 let ALL_CURRENT_ANSWERS = {Tot: 0}
 
+function encode_utf8(s) {
+    return unescape(encodeURIComponent(s));
+}
+
+
 const AddAnswer = (IDX) => {
 
     // if (ALL_CURRENT_ANSWERS["Q_" + IDX]) {
@@ -46,7 +51,6 @@ const AddAnswer = (IDX) => {
 }
 
 const addShit = () => {
-
 
     if(INDEX <= 7){
 
@@ -100,7 +104,7 @@ const SUBMIT = async () => {
         //Get all aswers for a question:
         for (let answer = 0; answer < ALL_CURRENT_ANSWERS["Q_" + index].length; answer++) {
 
-            currentanswers.push(document.getElementById("ANSWER_INPUT_" + index + "_" + parseInt(answer+1)).value)
+            currentanswers.push(encode_utf8(document.getElementById("ANSWER_INPUT_" + index + "_" + parseInt(answer+1)).value))
 
             if (document.getElementById("CHECKBOX_" + index + "_" + parseInt(answer+1)).checked == true) {
                 currentCorrectAnswers.push(answer)
@@ -130,7 +134,7 @@ const SUBMIT = async () => {
 
                 let RESULT_OBJECT = {
                     Creator: getCookie("user_id"),
-                    RoomName: document.getElementById("ROOM_NAME").value.replace(filter, ""),
+                    RoomName: encode_utf8(document.getElementById("ROOM_NAME").value.replace(filter, "")),
                     StartTime: parseInt(parseInt(document.getElementById("ROOM_START_TIME").value) + parseInt(new Date().getTime() / 1000)),
                     EndTime: parseInt(parseInt(document.getElementById("ROOM_END_TIME").value) + parseInt(new Date().getTime() / 1000)),
     
@@ -140,7 +144,7 @@ const SUBMIT = async () => {
                 for (let i = 0; i < INDEX; i++)  {
 
                     RESULT_OBJECT.Questions.push({
-                        Question: document.getElementById("QUESTION_INPUT_" + i).value.replace(filter, ""),
+                        Question: encode_utf8(document.getElementById("QUESTION_INPUT_" + i).value.replace(filter, "")),
                         Answers: ALL_ANSWERS[i],
                         RightAnswers: ALL_CORRECT_ANSWERS[i],//document.getElementById("CORRECT_ANSWER_INPUT_" + i).value.split(",").map(function(val){return parseInt(--val)})
                     })
@@ -154,11 +158,14 @@ const SUBMIT = async () => {
                     await fetch('https://backend.artur.red/Create_room/' + roomID, 
                     {
                         method: "GET",
+                        'Content-type': 'application/json; charset="utf-8"',
                         headers: {questions: JSON.stringify(RESULT_OBJECT)},
                         'Cache-Control': 'no-cache',
+                        
                     })
                     window.open("https://backend.artur.red/room/" + roomID, "_self")
                 }catch(err){
+                    console.log(RESULT_OBJECT)
                     throwerr(err)
                 }
                 console.log("done")
@@ -168,15 +175,5 @@ const SUBMIT = async () => {
         }
     }else{
         window.open("https://backend.artur.red/CreateAccount")
-    }
-}
-
-
-const joinRoom = () => {
-    val = document.getElementById("ROOM_ID_INPUT").value
-    if (val != "" && val.length == 20){
-        window.open("./room/" + document.getElementById("ROOM_ID_INPUT").value)
-    }else{
-        document.getElementById("WARNING").style.display = "block"
     }
 }

@@ -1,5 +1,4 @@
 const express = require('express');
-const { Do } = require('faunadb');
 //FaunaDB
 const faunadb = require("faunadb")
 
@@ -54,33 +53,56 @@ const GET_NAVBAR = () => {
 
     `
 }
+function decode_utf8(s) {
+    return decodeURIComponent(escape(s));
+}
+
+
 
 const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
 
     let EndString = ""
 
-
     DOC.Questions.forEach(element => {
 
         let QuestionID = GET_RANDOM_ID()
-        EndString += "<div class='QUESTION_CONTAINER'><p class='QuestionTitle'>" + element.Question + "</p> <p style='text-align: center; color: rgba(255, 255, 255, 0.7)'>" + ((element.RightAnswers.length >= 2) ? "This question contains multiple answers" : "") + "</p> <div class='ButtonContainer'>"
+
+        let hasTrailingDiv = true;
+
+        EndString += "<div class='QUESTION_CONTAINER'><p class='QuestionTitle'>" + decode_utf8(element.Question) + "</p> <p style='text-align: center; color: rgba(255, 255, 255, 0.7)'>" + ((element.RightAnswers.length >= 2) ? `This question contains ${element.RightAnswers.length} right answers` : "") + "</p>"
 
         element.Answers.forEach((answer, indx) => {
 
             QuestionID = GET_RANDOM_ID()
 
+            if (indx % 2 == 0) {
+                EndString += "<div class='ANSWER_BUTTON_CONTAINER'>"
+            }
+
             if (element.RightAnswers.indexOf(indx) != -1) {
 
-                EndString += `<button id="id--` + QuestionID + `-" onclick='check("id--` + QuestionID + `-")'>` + answer + `</button>`
+                EndString += `<button class="ANSWER_BUTTON" id="id--` + QuestionID + `-" onclick='check("id--` + QuestionID + `-")'>` + decode_utf8(answer) + `</button>`
 
             } else {
 
-                EndString += `<button id="id--` + QuestionID + `" onclick='check("id--` + QuestionID + `")'>` + answer + `</button>`
+                EndString += `<button class="ANSWER_BUTTON" id="id--` + QuestionID + `" onclick='check("id--` + QuestionID + `")'>` + decode_utf8(answer) + `</button>`
 
             }
-        })
 
-        EndString += "</div></div>"
+            if (hasTrailingDiv == false) {
+                EndString += "</div>"
+                hasTrailingDiv = true
+            }
+            if (indx % 2 == 0) {
+                hasTrailingDiv = false;
+            }
+
+
+        })
+        if (hasTrailingDiv == false) {
+            EndString += "</div>"
+        }
+        EndString += "</div>"
     });
 
 
@@ -185,14 +207,14 @@ const SEND_QUESTION_FILE = (ID, DOC, NAME, USER) => {
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap" rel="stylesheet"> 
                 <link rel="stylesheet" href="https://backend.artur.red/style.css" type="text/css">
-                <title>${NAME} - ${USER.data.Username}</title>
+                <title>${decode_utf8(NAME)} - ${USER.data.Username}</title>
                 
             </head>
             <body>
                 ${GET_NAVBAR()}
                 <h1 class="SmallH1" style="position: absolute; top: 2.5vmax; right: 0.5vmax" id="DeadCountdown"></h1>
 
-                <h1>${NAME}</h1>
+                <h1>${decode_utf8(NAME)}</h1>
                 <h1 class="SmallH1" style="text-align: center">by<span style="text-decoration: underline 0.3vmax rgb(114, 227, 185)"><a href="https://backend.artur.red/user/${DOC.Creator}">${USER.data.Username}</a></span></h1>
 
                 

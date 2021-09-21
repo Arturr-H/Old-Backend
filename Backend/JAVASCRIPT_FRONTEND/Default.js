@@ -45,3 +45,19 @@ const createRoom = () => {
     window.open("https://backend.artur.red/create", "_self")
 
 }
+const joinRoom = () => {
+    val = document.getElementById("ROOM_ID_INPUT").value
+    if (val != "" && val.length == 20){
+        window.open("./room/" + document.getElementById("ROOM_ID_INPUT").value)
+    }else{
+        document.getElementById("ErrorSign").style.display = "block"
+
+        setTimeout(() => {
+            document.getElementById("ErrorSign").style.opacity = "0"
+            setTimeout(() => {
+                document.getElementById("ErrorSign").style.display = "none"
+                document.getElementById("ErrorSign").style.opacity = "1"
+            }, 300);
+        }, 1000);
+    }
+}
