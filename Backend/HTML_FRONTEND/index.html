@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Backend, Artur red backend, Artur.red">
+    <meta name="author" content="Artur Hoffsummer">
+    <meta name="publisher" content="Artur Hoffsummer">
+    <meta name="copyright" content="Artur Hoffsummer">
+    <meta name="description" content="Artur.red backend server, hosted by m you  mom ome!">
+    <meta name="page-type" content="Games">
+    <meta name="audience" content="Everyone">
+    <meta property="og:image" content="https://kaydee.net/assets/opengraph/website-design-seo.jpg">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Backend of artur.red</title>
+
+</head>
+
+<body>
+    <div class="NAVBAR">
+        <a id="USER_ACCOUNT_NAV_LINK"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+        <p id="sgnout" onclick="sgno">Sign out</p>
+
+
+        <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+            <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+            <button><a href="https://backend.artur.red/login">Log in</a></button>
+        </div>
+
+        <a id="ngmo" class="LINK">⦿</a>
+        <a class="LINK" href="https://artur.red"><span style="transform: rotate(-90deg); display: inline-block;">⌃</span>back</a>
+    </div>
+    <div class="ALIGN-CENTER" style="white-space: nowrap;">
+        <h1>Kash<span class="LOGO_O">o</span><span class="LOGO_O">o</span>t</h1>
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button onclick="createRoom()" class="HORIZONTAL_MARGIN SCALABLE">Create room</button>
+        <button onclick="joinRoom()" class="HORIZONTAL_MARGIN SCALABLE" id="JOIN_ROOM">Join room</button>
+        <input placeholder="Room ID" class="ROOM_ID_INPUT" id="ROOM_ID_INPUT" style="margin-left: -0.8vmax;" type="text">
+        <button id="ErrorSign" class="HORIZONTAL_MARGIN SCALABLE" style="display: none; transition: all 0.3s; opacity: 1; margin-left: 0.4vmax; background: rgb(239, 110, 110);">Invalid ID!</button>
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button><a href="https://backend.artur.red/rooms">All rooms</a></button>
+    </div>
+
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
+
+</body>
+</html>

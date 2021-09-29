@@ -1,0 +1,74 @@
+<html style="--CHANGEABLE-APP-BG: rgb(255, 255, 255); --CHANGEABLE-APP-TEXT: rgb(67, 63, 84);" lang="en"><head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&amp;display=swap" rel="stylesheet"> 
+    <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
+
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Backend of artur.red</title>
+
+</head>
+<body>
+    <div class="NAVBAR">
+        <a id="USER_ACCOUNT_NAV_LINK" href="https://backend.artur.red/CreateAccount"><div class="USER_ACCOUNT_NAV" id="USER_ACCOUNT_NAV"></div></a>
+        
+
+
+        <div class="TOP_USER_BAR" id="TOP_USER_BAR">
+            <button><a href="https://backend.artur.red/CreateAccount">Create account</a></button>
+            <button><a href="https://backend.artur.red/login">Log in</a></button>
+        </div>
+
+        <a class="LINK" href="https://backend.artur.red"><span style="transform: rotate(-90deg); display: inline-block;">⌃</span>back</a>
+    </div>
+    <h1 style="margin-bottom: 3vmax;">Create a room!</h1>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+
+        <input placeholder="Room name" class="TEXT_INPUT" id="ROOM_NAME" type="text" style="z-index: 2; width: 20vmax;">
+
+    </div>
+
+    <div style="width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 4vmax; margin-bottom: 10vmax;">
+
+        <div id="OUTPUT">
+
+            <div id="drm" class="BUTTON_WRAPPER" style="margin-bottom: 2vmax">
+                <button style="width: 25vmax;" onclick="addShit()">Add question</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+
+        <input placeholder="Start time" class="TEXT_INPUT" id="ROOM_START_TIME" type="text">
+        <input placeholder="End time" class="TEXT_INPUT" id="ROOM_END_TIME" type="text">
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button id="pBtn">Account visibility:</button><span style="font-size: 2vmax; margin: auto; margin-left: 1vmax; margin-right: 1vmax;" id="pblspan">🔓</span>
+    </div>
+
+    <div class="ALIGN-CENTER">
+        <h1 id="erroroutput" class="SmallH1" style="
+            background: linear-gradient(158deg, rgb(239, 126, 126), rgb(208, 10, 10));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            width: 80%;
+        "></h1>
+    </div>
+
+    <div class="ALIGN-CENTER BUTTON_WRAPPER">
+        <button id="SUBMIT_ALL" onclick="SUBMIT()" style="width: 15vmax;">Submit room</button>
+    </div>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Default.js"></script>
+    <script type="text/javascript" src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/Create_lobby.js"></script>
+
+
+</body></html>

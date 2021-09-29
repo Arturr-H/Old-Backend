@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="icon" href="https://artur.red/Backend/DATA/favicon.png">
+        <link rel="stylesheet" href="https://artur.red/Backend/style.css" >
+        <title>Create Artur.red account</title>
+    </head>
+    <body>
+
+        <div class="ALIGN-CENTER">
+            <h1>Sign up</h1>
+        </div>
+        <div class="ALIGN-CENTER">
+            <button style="margin: 0%; z-index: 2;">Name:</button>
+            <input id="inpUn" placeholder="Name" class="ROOM_ID_INPUT" type="text" style="z-index: 1; width: 20vmax;" maxlength="15">
+        </div>
+        <div class="ALIGN-CENTER">
+            <button style="margin: 0%; z-index: 2;">Email:</button>
+            <input id="inpEm" placeholder="Email" class="ROOM_ID_INPUT" type="email" style="z-index: 1; width: 20vmax;">
+        </div>
+        <div class="ALIGN-CENTER">
+            <button style="margin: 0%; z-index: 2;">Password:</button>
+            <input id="inpPw" placeholder="Password" class="ROOM_ID_INPUT" type="password" style="z-index: 1; width: 18vmax;">
+        </div>
+        <div class="ALIGN-CENTER">
+            <button style="margin: 0%; z-index: 2;">Description:</button>
+            <input id="inpDs" placeholder="Description" class="ROOM_ID_INPUT" type="text" style="z-index: 1; width: 100vmax;" maxlength="200">
+        </div>
+        <div class="ALIGN-CENTER">
+            <button id="SgnBTN">Sign in!</button>
+        </div>
+        <div class="ALIGN-CENTER">
+            <h1 id="erroroutput" class="SmallH1" style="
+                background: linear-gradient(158deg, rgb(239, 126, 126), rgb(208, 10, 10));
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-align: center;
+                width: 80%;
+            ">DO NOT USE YOUR REAL PASSWORD</h1>
+        </div>
+    </body>
+    <script src="//cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb-min.js"></script>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/cookies.js"></script>
+    <script src="https://artur.red/Backend/JAVASCRIPT_FRONTEND/CreateAccount.js"></script>
+</html>

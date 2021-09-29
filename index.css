@@ -1,0 +1,96 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    background: rgb(255, 255, 255);
+}
+.BOX{
+    width: 100%;
+    height: calc(100% - 10vmax);
+    margin: 5vmax;
+
+    background: rgb(255, 255, 255);
+    display: flex;
+    box-shadow: 20px 20px 60px rgb(200, 200, 200);
+}.INNER_LEFT{
+    width: 20%;
+    height: 100%;
+    background: black;
+    position: relative;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0%;
+    padding: 0%;
+
+    overflow: hidden;
+}.INNER_LEFT > img{
+    flex: 1;
+    display: block;
+}
+
+.INNER_TEXT_CONTAINER{
+    width: 80%;
+    height: 100%;
+    position: relative;
+    display: inline-block;
+
+    margin-left: 2vmax;
+    padding: 0%;
+}
+h1{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin-left: 2vmax;
+    width: 80%;
+}input[type="text"]{
+    margin-left: 2vmax;
+
+    border: none;
+    outline: none;
+    padding: 0.5vmax;
+    font-weight: 100;
+    border-bottom: black 1px solid;
+    z-index: 2;
+    margin-right: 2.2vmax;
+}
+input[type="text"]:active + .InputPlaceholder{
+    transform: translateY(-4vmax);
+    color: rgb(173, 16, 16);
+    background: red;
+}
+input[type="submit"]{
+    border: none;
+    outline: none;
+    padding: 0.5vmax;
+    font-weight: 100;
+    background: white;
+    border-right: black 1px solid;
+    border-bottom: black 1px solid;
+    border-top: black 1px solid;
+
+    margin-left: -2.5vmax;
+}
+
+.InputPlaceholder{
+    color: rgb(203, 203, 203);
+    position: absolute;
+    margin-top: .4vmax;
+    font-weight: 100;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    display: block;
+    margin-left: 2.6vmax;
+}
+input[type="submit"]:hover{background: linear-gradient(to left, rgb(0, 201, 120) 80%, white 100%);}
+input[type="submit"]:active{background: linear-gradient(to left, rgb(0, 171, 120) 80%, white 100%);}
+
+
+
